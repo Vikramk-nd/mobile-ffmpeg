@@ -20,6 +20,9 @@ Pod::Spec.new do |s|
     # Pointing to your repository where the frameworks are stored
     s.source            = { :git => "https://github.com/Vikramk-nd/mobile-ffmpeg.git", :tag => s.version.to_s }
 
+    # Ensure CocoaPods keeps the xcframeworks
+    s.preserve_paths    = "ios-frameworks/mobile-ffmpeg-min/*.xcframework"
+
     # Reference vendored XCFrameworks from the ios-frameworks folder
     s.ios.vendored_frameworks = 'ios-frameworks/mobileffmpeg.xcframework', 
                                 'ios-frameworks/libavcodec.xcframework', 
