@@ -7,18 +7,26 @@ Pod::Spec.new do |s|
     DESC
 
     s.homepage          = "https://github.com/Vikramk-nd/mobile-ffmpeg"
-
     s.author            = { "Taner Sener" => "tanersener@gmail.com" }
-    s.license           = { :type => "LGPL-3.0", :file => "mobileffmpeg.framework/LICENSE" }
+    s.license           = { :type => "LGPL-3.0", :file => "ios-frameworks/mobileffmpeg.xcframework/LICENSE" }
 
     s.platform          = :ios
     s.requires_arc      = true
     s.libraries         = 'z', 'bz2', 'c++', 'iconv'
 
-    # Updated source URL pointing to your forked repo release
-    s.source            = { :http => "https://github.com/Vikramk-nd/mobile-ffmpeg/releases/download/v4.4.nd/mobile-ffmpeg-min.zip" }
-
     s.ios.deployment_target = '9.3'
-    s.ios.frameworks    = 'AudioToolbox','AVFoundation','CoreMedia','VideoToolbox'
-    s.ios.vendored_frameworks = 'mobileffmpeg.framework', 'libavcodec.framework', 'libavdevice.framework', 'libavfilter.framework', 'libavformat.framework', 'libavutil.framework', 'libswresample.framework', 'libswscale.framework'
+    s.ios.frameworks    = 'AudioToolbox', 'AVFoundation', 'CoreMedia', 'VideoToolbox'
+
+    # Pointing to your repository where the frameworks are stored
+    s.source            = { :git => "https://github.com/Vikramk-nd/mobile-ffmpeg.git", :tag => s.version.to_s }
+
+    # Reference vendored XCFrameworks from the ios-frameworks folder
+    s.ios.vendored_frameworks = 'ios-frameworks/mobileffmpeg.xcframework', 
+                                'ios-frameworks/libavcodec.xcframework', 
+                                'ios-frameworks/libavdevice.xcframework', 
+                                'ios-frameworks/libavfilter.xcframework', 
+                                'ios-frameworks/libavformat.xcframework', 
+                                'ios-frameworks/libavutil.xcframework', 
+                                'ios-frameworks/libswresample.xcframework', 
+                                'ios-frameworks/libswscale.xcframework'
 end
